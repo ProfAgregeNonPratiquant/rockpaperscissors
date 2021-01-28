@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock, paper and scissors</title>
+</head>
+
+<body>
+    <script>
+        
+        const choices = ['ROCK', 'PAPER', 'SCISSORS']
+        const computerPlay = () => choices[Math.floor(Math.random() * 3)]
+
+        function singleRound(playerSelection, computerSelection) {
+            playerSelection = playerSelection.toUpperCase()
+            if (playerSelection === computerSelection) {
+                return 0
+            }
+            else {
+                return (choices.indexOf(computerSelection)- choices.indexOf(playerSelection) +3) % 3 === 2 ? 1 : -1
+            }
+        }
+
+        function playGame() {
+            let roundResult = 0
+            for (let i = 0; i < 5; i++) {
+                roundResult += singleRound(prompt("What's your choice?"), computerPlay())
+            }
+            if (roundResult === 0) {
+                console.log('Draw')
+            }
+            else {
+                console.log(roundResult > 0 ? 'You win!' : 'You lose...')
+            }
+        }
+
+        playGame()
+    </script>
+</body>
+
+</html>
