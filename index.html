@@ -4,40 +4,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+
     <title>Rock, paper and scissors</title>
 </head>
 
 <body>
-    <script>
-        
-        const choices = ['ROCK', 'PAPER', 'SCISSORS']
-        const computerPlay = () => choices[Math.floor(Math.random() * 3)]
-
-        function singleRound(playerSelection, computerSelection) {
-            playerSelection = playerSelection.toUpperCase()
-            if (playerSelection === computerSelection) {
-                return 0
-            }
-            else {
-                return (choices.indexOf(computerSelection)- choices.indexOf(playerSelection) +3) % 3 === 2 ? 1 : -1
-            }
-        }
-
-        function playGame() {
-            let roundResult = 0
-            for (let i = 0; i < 5; i++) {
-                roundResult += singleRound(prompt("What's your choice?"), computerPlay())
-            }
-            if (roundResult === 0) {
-                console.log('Draw')
-            }
-            else {
-                console.log(roundResult > 0 ? 'You win!' : 'You lose...')
-            }
-        }
-
-        playGame()
-    </script>
+    <div class="game-board">
+        <div class="game-state">
+            <div class="opponent">
+                <h2>You</h2>
+                <div class="player-card">
+                    <p>Any choice</p>
+                </div>
+            </div>
+            <div class="score">
+                <h2>VS</h2>
+                <p></p>
+                
+            </div>
+            <div class="opponent">
+                <h2>Computer</h2>
+                <div class="computer-card">
+                    <p>Any choice</p>
+                </div>
+            </div>
+        </div>
+        <div class="game-controls">
+            <h2>Choose your weapon :</h2>
+            <div class="controls">
+                <button id="rock">Rock</button>
+                <button id="paper">Paper</button>
+                <button id="scissors">Scissors</button>
+            </div>
+        </div>
+        <div class="game-over">
+            <p id="theWinnerIs"></p>
+            
+                <button style="display: block;" id="replay">Play again</button>
+            
+        </div>
+    </div>
 </body>
 
 </html>
